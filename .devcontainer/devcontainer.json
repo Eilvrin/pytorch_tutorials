@@ -1,0 +1,51 @@
+{
+    "name": "pytorch_tutorials",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "USER_NAME": "${localEnv:USER}",
+            "USER_UID": "1000",
+            "USER_GID": "1000"
+        }
+    },
+    "remoteUser": "${localEnv:USER}",
+    "runArgs": [
+        "--shm-size=16g",
+        "--gpus=all",
+        "--network=host",
+        "-e",
+        "NVIDIA_DRIVER_CAPABILITIES=all", // Expose all NVIDIA driver capabilities
+        "-e",
+        "DISPLAY=${env:DISPLAY}",
+        "-e",
+        "XAUTHORITY=${localEnv:XAUTHORITY}"
+    ],
+    "postAttachCommand": "/bin/bash",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.black-formatter",
+                "ms-python.debugpy",
+                "ms-python.isort",
+                "ms-python.mypy-type-checker",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "streetsidesoftware.code-spell-checker",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "mounts": [
+        {
+            "source": "/tmp/.X11-unix",
+            "target": "/tmp/.X11-unix",
+            "type": "bind"
+        },
+        {
+            "source": "${localEnv:XAUTHORITY}", // XAUTH path from the host environment
+            "target": "/tmp/.docker.xauth", // Inside the container, mounted as .docker.xauth
+            "type": "bind"
+        }
+    ]
+}

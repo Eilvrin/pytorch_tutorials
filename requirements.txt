@@ -1,0 +1,16 @@
+# Deep learning framework
+torch
+torchvision
+torchaudio
+
+# Config management
+omegaconf
+hydra-core
+
+# Utils
+numpy
+matplotlib
+jupyterlab
+tqdm
+graphviz
+regex
