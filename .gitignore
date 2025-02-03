@@ -5,3 +5,7 @@ model*
 runs
 *.onnx
 mlruns
+*.pt
+*.ptl
+tmp
+*.json
