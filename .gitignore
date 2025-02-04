@@ -8,4 +8,6 @@ mlruns
 *.pt
 *.ptl
 tmp
-*.json
+trace*.json
+libtorch
+build
