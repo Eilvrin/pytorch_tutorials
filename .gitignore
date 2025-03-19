@@ -1,7 +1,7 @@
 .ipynb_checkpoints
 data
 __pycache__
-model*
+model_summary.txt
 runs
 *.onnx
 mlruns
@@ -11,3 +11,4 @@ tmp
 trace*.json
 libtorch
 build
+log
